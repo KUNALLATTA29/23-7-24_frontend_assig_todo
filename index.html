@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Box</title>
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    #btn{
+        border-radius: 50px;
+        padding: .5%;
+        width: 4vw;
+    }
+    input{
+        padding: .5%;
+        width: 20vw;
+    }
+    
+  
+  </style>
+</head>
+<body>
+
+    <div>
+        <input type="text" id="task">
+        <button id="btn">Add</button>
+    </div>
+    <ul id="list">
+
+    </ul>
+ 
+  <script>
+    document.getElementById("btn").addEventListener('click',()=>{
+        let value = document.getElementById("task").value;
+        let list = document.getElementById("list");
+
+        if(value!==""){
+
+            let new_li = document.createElement("li");
+            new_li.innerText = value;
+
+            let delbtn = document.createElement("button");
+            delbtn.innerText = "delete";
+
+            let combtn = document.createElement("button");
+            combtn.innerText = "complete";
+
+            delbtn.addEventListener('click', ()=>{
+                new_li.remove();
+            })
+
+            combtn.addEventListener('click',()=>{
+                new_li.style.textDecoration = "line-through"
+            })
+
+            new_li.appendChild(delbtn);
+            new_li.appendChild(combtn);
+            list.appendChild(new_li);
+
+        }
+
+        document.getElementById("task").value = " ";
+    })
+  </script>
+</body>
+</html>
